@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Liste de contenus</title>
+	<meta name="generator" content="BBEdit 14.6" />
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<header>
+		<div class="logo">
+		<img src="images/logo.png" alt="Logo">
+		</div>
+	</header>
+	<div class="container">
+	<h1 class="titre">
+    Cliquez sur votre choix :</h1>
+    
+	<div class="d-flex flex-column justify-content-center align-items-center" style="height: 50vh; margin-bottom: 50px;">
+			<p>
+				<a href="bye.html" class="small" style="color: white; cursor: pointer;">Intrusion, Adam Salky, <strong>Thriller</strong></a>
+				<br><a href="bye.html" class="small" style="color: white; cursor: pointer;">Paranoia, Robert luketic, <strong>Thriller</strong></a>
+
+				<br><a href="bye.html" class="small" style="color: white; cursor: pointer;">Ankahi Kahaniya, Ashwiny Iyer Tiwari, <strong>Drama</strong></a>
+			
+				<br><a href="bye.html" class="small" style="color: white; cursor: pointer;">Father Who Moves Mountains, Daniel Sandu, <strong>Thriller/Drama</strong></a>
+				<br><a href="bye.html" class="small" style="color: white; cursor: pointer;">The Stronghold, Cédric Jimenez, <strong>Action & Adventure/Drama</strong></a>
+				<br><a href="bye.html" class="small" style="color: white; cursor: pointer;">Safe House, Daniel Espinosa, <strong>Action & Adventure</strong></a>
+				<br><a href="bye.html" class="small" style="color: white; cursor: pointer;">Training Day, Antoine Fuqua, <strong>Thriller/Drama</strong></a>
+				<br><a href="bye.html" class="small" style="color: white; cursor: pointer;">King of Boys,Kemi Adetiba, <strong>Drama</strong></a>
+				<br><a href="bye.html" class="small" style="color: white; cursor: pointer;">Shadow Parties, Yemi Amodu, <strong>Thriller/Drama</strong></a>
+				<br><a href="bye.html" class="small" style="color: white; cursor: pointer;">Anjaam, Rahul Rawail, <strong>Thriller/Drama</strong></a>
+			</p>
+		</div>
+	</div>
+	<div class="fixed-bottom text-right mr-3 mb-3">
+  		<button type="button" class="btn btn-light rounded-pill text-dark font-weight-bold btn-lg" onclick="refreshPage()">
+  		  Refresh
+  		</button>
+	</div>
+	<script>
+	function refreshPage() {
+   		window.location.href = "contenus_refresh.html";
+ 	}
+</script>
+</body>
+</html>

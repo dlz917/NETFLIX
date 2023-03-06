@@ -1,0 +1,117 @@
+html{
+  height: 100%;
+  overflow: hidden;
+} /* ca fait qu'on puisse pas scroll down */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000;
+  z-index: 2; /* ensure header is behind p element */
+}
+body {
+  background-color: #000;
+}
+p {
+  color: #FFFFFF;
+  z-index: 3; /* bring p element to the front */
+  position: relative; /* ensure z-index takes effect */
+  font-size: 32px;
+  font-family:Arial;
+  margin-right:20%;
+  margin-left:20%;
+
+}
+.logo {
+  float: left;
+  margin: 1% 0.5%;
+}
+.logo img {
+  width: 50%;
+  height: 50%;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+} 
+.btn1{
+    margin-top:12%;
+    display: inline-block;
+    background-color : lightgrey;
+    color: black;
+    text-align: center;
+    font-size: 18px;
+    width: 500px;
+    height: 50px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-left: 15%;
+    font-weight: bold;
+    font-family: arial;
+}
+.btn2{
+    display: inline-block;
+    background-color : lightgrey;
+    color: black;
+    text-align: center;
+    font-size: 18px;
+    width: 500px;
+    height: 50px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-left: 15%;
+    margin-top: 3%;
+    font-weight: bold;
+    font-family: arial;
+}
+
+.prem{
+    color: white;
+    margin-left: 15%;
+    margin-top: 10%;
+    font-family: arial;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 25px;
+    padding: 1%;
+}
+
+.users{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+.form-control{
+    width: 100%;
+}
+
+.connexion {
+ margin: 0 auto; /* centre la balise horizontalement */
+  text-align: center;
+  margin-top: 30%;
+   transform: scale(2.5);
+}
+.container {
+  width: 50%; /* définit la largeur du conteneur */
+  margin: 0 auto; /* centre le conteneur horizontalement */
+}
+
+.horizontal-bar {
+  width: 50%; /* spécifie la largeur à 100% */
+  height: 1px; /* spécifie la hauteur de la barre à 1 pixel */
+  background-color: white;/* définit la couleur de fond de la barre */
+}
+
+.creer{
+text-align: center;
+  margin-top: 10%;
+  transform: scale(2.5);
+}
+
+.square-btn {
+  border-radius: 0;
+  /* autres styles personnalisés */
+}
+
