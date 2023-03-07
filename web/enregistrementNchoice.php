@@ -22,7 +22,7 @@
 			header('Location: index.html');
 			exit();
 	} else {
-		header('Location: connexion.php?mail='.$_POST["mail"]."\>");
+		header('Location: connexion.php?mail='.$_POST["mail"]);
 		exit();
 }}
 		
