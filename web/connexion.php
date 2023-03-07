@@ -14,7 +14,7 @@
 		<form action="enregistrementNchoice.php" method="post" autocomplete="off">
 			<div class='connexion'>
 			<p>
-				<input type="text" name="id" placeholder="Identifiant" value="<?php echo isset($_GET['id']) ? $_GET['id'] : '' ?>">
+				<input type="email" name="mail" placeholder="Mail" value="<?php echo isset($_GET['mail']) ? $_GET['mail'] : '' ?>">
 				</p><p>
 					<input type="password" name="mdp" placeholder="Mot de passe" value=""/>
 				</p>
