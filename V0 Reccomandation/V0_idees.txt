@@ -1,0 +1,9 @@
+1- content-based filtering
+
+2- find the correlation between the films liked by the user and then deploy the films that passes the manual filtering and rank them by sum of correlatipons between the film to deploy (one by one if not 2 heavy) and the films in the historic
+
+
+Use pandas.factorize for text??
+
+try to get a correlation matrix that resumes the information from all columns to see the correlation between 1 film to another.
+
