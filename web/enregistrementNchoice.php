@@ -15,7 +15,9 @@
 		$req->execute(array('email' => $email));	
 		$utilisateur = $req->fetch();
 	
-		if (password_verify($password, $utilisateur['mdp'])) {
+		if (isset($_POST['mail']) && !empty($_POST['mail']) && isset($_POST['mdp']) && !empty($_POST['mdp'])) {
+			$email = $_POST['mail'];
+			$mdp = md5($_POST['mdp']);
 			$_SESSION['utilisateur'] = array(
 			'id' => $utilisateur['id_us'],
 			'mail' => $utilisateur['mail']);
