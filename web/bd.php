@@ -2,7 +2,7 @@
 function getBD(){
 $servername = "localhost";
 $username = "root";
-$dbname = "nchoice_definitif";
+$dbname = "nchoice";
 $bdd = new PDO("mysql:host=$servername;dbname=$dbname", $username,"");
 return $bdd;
 }
