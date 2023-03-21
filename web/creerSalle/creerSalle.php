@@ -27,6 +27,35 @@ $options_director = '';
 while ($row = $stmt->fetch()) {
     $options_director .= '<option>' . htmlspecialchars($row['director']) . '</option>';
 }
+
+// Génère un code aléatoire unique de 4 chiffres
+$code = strval(mt_rand(1000, 9999));
+
+// Vérifie si le code existe déjà dans la table salle
+$stmt = $bdd->prepare('SELECT code FROM salle WHERE code = :code');
+$stmt->execute(array('code' => $code));
+
+// Si le code existe déjà, en génère un nouveau jusqu'à ce qu'il soit unique
+while ($stmt->fetch()) {
+    $code = strval(mt_rand(1000, 9999));
+    $stmt->execute(array('code' => $code));
+}
+
+// Insère le code, le nom d'utilisateur et la date actuelle dans la table salle
+if(isset($_SESSION['utilisateur'])) {
+    $id_us = $_SESSION['utilisateur']['id'];
+} else {
+    // rediriger l'utilisateur vers une page de connexion
+    header('Location: connexion.php');
+    exit();
+}
+$date = date('Y-m-d H:i:s');
+$stmt = $bdd->prepare('INSERT INTO salle (code, date) VALUES (:code, :date)');
+$stmt->execute(array('code' => $code, 'date' => $date));
+
+$stmt = $bdd->prepare('INSERT INTO creer (id_us, code, date) VALUES (:id_us, :code, :date)');
+$stmt->execute(array('id_us' => $id_us, 'code' => $code, 'date' => $date));
+
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +64,9 @@ while ($row = $stmt->fetch()) {
     <meta charset="utf-8">
     <title>Un seul écran</title>
     <link href="../css/bootstrap.css" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <header>
@@ -48,7 +79,7 @@ while ($row = $stmt->fetch()) {
     Envoyer votre code salle aux utilisateurs souhaités puis remplisser vos critères :
 </p>
 <div class="container">
-<form action="enregistrementchoix_1ecran.php" method="post">
+<form action="../1ecran/enregistrementchoix_1ecran.php" method="post">
     <div class="row">
       <div class="col-md-4 text-start">
         <img src="../images/images.png" alt="IMG" title="User1" width="25%">
@@ -92,9 +123,10 @@ while ($row = $stmt->fetch()) {
 <div class="fixed-top text-right mr-3 mb-3" style="margin-top: 30px; margin-right:50px;">
     <span style="color: white; font-weight: bold;">Votre code :</span>
     <div class="code-box bg-light d-inline-flex align-items-center justify-content-center">
-        <span class="code-text font-weight-bold">3580</span>
+        <span class="code-text font-weight-bold"><?php echo $code; ?></span>
     </div>
 </div>
+
 
 <div class="fixed-bottom text-right mr-3 mb-3">
   <button type="button" class="btn btn-light rounded-pill text-dark font-weight-bold btn-lg" onclick="window.location.href='../contenus1.html'">

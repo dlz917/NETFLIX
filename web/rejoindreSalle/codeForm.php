@@ -2,13 +2,13 @@
 <html>
 	<head>
 		<title>Nchoice | Saisir son code </title>
-		<link rel="stylesheet" href="./css/bootstrap.css" type="text/css" media="screen"/>
-		<meta charset="UTF-8">>
+		<link rel="stylesheet" href="../css/bootstrap.css" type="text/css" media="screen"/>
+		<meta charset="UTF-8">
 	</head>
 		<body>
 			<header>
 				<div class="logo">
-					<img src="images/logo.png" alt="Logo">
+					<img src="../images/logo.png" alt="Logo">
 				</div>
 			</header>
 				<form action="rejoindreSalle/user.html" method="post" autocomplete="off">
