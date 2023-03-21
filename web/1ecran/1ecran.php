@@ -101,7 +101,7 @@ while ($row = $stmt->fetch()) {
 </div>
 
 <div class="fixed-bottom text-right mr-3 mb-3">
-  <button type="button" class="btn btn-light rounded-pill text-dark font-weight-bold btn-lg" onclick="window.location.href='../index.html'">
+  <button type="button" class="btn btn-light rounded-pill text-dark font-weight-bold btn-lg" onclick="window.location.href='../contenus1.html'">
     >>> 
   </button>
 </div>
