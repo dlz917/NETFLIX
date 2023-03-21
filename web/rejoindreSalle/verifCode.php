@@ -17,7 +17,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // Vérifier si le code existe dans la table
 if (count($rows) > 0) {
     // Le code existe dans la table, rediriger vers la page user.html
-    header('Location: ./user.html');
+    header('Location: ./user.php');
     exit;
 } else {
     // Le code n'existe pas dans la table, afficher un message d'erreur sur la page codeForm.php
