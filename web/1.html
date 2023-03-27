@@ -13,14 +13,11 @@
 						<img src="images/logo.png"
 						     alt="Logo">
 					</div>
-						<div class="d-flex flex-column position-relative">
-							<!-- Login button -->
-							<a href="connexion.php"><button type="button"
-							        class="btn btn-danger btn-lg text-white position-absolute w-20% top-0 end-0 m-1">Se connecter</button></a>
-							<!-- Sign up button -->
-							<a href="creerCompte.php" ><button type="button"
-							        class="btn btn-danger btn-lg text-white position-absolute w-20% top-50 end-0" style="margin-top: 5.5%; margin-right: 0.25em;" >S'inscrire</button></a>
+						<div class="button-container">
+  						<button class="button"><a href="connexion.php" class="text-white">Connexion</a></button>
+ 					 	<button class="button"><a href="creerCompte.php" class="text-white">Inscription</a></button>
 						</div>
+
 					</header>
 					<div class="d-flex align-items-center justify-content-center"
 					     style="height: 100vh;">
@@ -29,5 +26,45 @@
                               <br>Avec Nchoice, c’est lui qui choisit pour vous.</p>
 								</div>
 							</div>
+							<style>
+							.button-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  text-align: right;
+}
+
+.button {
+  display: block;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: darkred;
+}
+body {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+							
+
+						
+
+							</style>
 						</body>
 					</html>
