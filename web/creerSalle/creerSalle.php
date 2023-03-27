@@ -124,12 +124,5 @@ $stmt->execute(array('id_us' => $id_us, 'code' => $code, 'date' => $date));
     </div>
 </div>
 
-
-<div class="fixed-bottom text-right mr-3 mb-3">
-  <button type="button" class="btn btn-light rounded-pill text-dark font-weight-bold btn-lg" onclick="window.location.href='../contenus1.html'">
-    >>> 
-  </button>
-</div>
-
 </body>
 </html>
