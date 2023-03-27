@@ -76,7 +76,7 @@ $stmt->execute(array('id_us' => $id_us, 'code' => $code, 'date' => $date));
     Envoyer votre code salle aux utilisateurs souhaités puis remplisser vos critères :
 </p>
 <div class="container">
-<form action="../1ecran/enregistrementchoix_1ecran.php" method="post">
+<form action="../1ecran/enregistrementChoix1ecran.php" method="post">
     <div class="row">
       <div class="col-md-4 text-start">
         <img src="../images/images.png" alt="IMG" title="User1" width="25%">
