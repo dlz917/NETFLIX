@@ -7,17 +7,17 @@ $bdd = getBD();
 // Récupération des données pour le menu "Genre 1"
 $sql = "SELECT genre FROM genre_new";
 $stmt = $bdd->query($sql);
-$options_genre_1 = '<option>Pas de préférence</option>';
+$options_genre = '<option>Pas de préférence</option>';
 while ($row = $stmt->fetch()) {
-    $options_genre_1 .= '<option>' . htmlspecialchars($row['genre']) . '</option>';
+    $options_genre .= '<option>' . htmlspecialchars($row['genre']) . '</option>';
 }
 
 // Récupération des données pour le menu "Genre 2"
-$sql = "SELECT genre FROM genre_new";
+$sql = "SELECT cast FROM cast_new";
 $stmt = $bdd->query($sql);
-$options_genre_2 = '<option>Pas de préférence</option>';
+$options_cast = '<option>Pas de préférence</option>';
 while ($row = $stmt->fetch()) {
-    $options_genre_2 .= '<option>' . htmlspecialchars($row['genre']) . '</option>';
+    $options_cast .= '<option>' . htmlspecialchars($row['cast']) . '</option>';
 }
 
 // Récupération des données pour le menu "Director"
@@ -35,75 +35,146 @@ while ($row = $stmt->fetch()) {
     <meta charset="utf-8">
     <title>Un seul écran</title>
     <link href="../css/bootstrap.css" rel="stylesheet">
-
 </head>
 <body>
-
-<header>
-    <div class="logo">
-        <img src="../images/logo.png" alt="Logo">
-    </div>
-</header>
-
-<p class="prem">
-    Ajouter le nombre d'utilisateurs souhaité puis remplisser vos critères :
-</p>
-<div class="container">
-<form action="enregistrementchoix_1ecran.php" method="post">
-    <div class="row">
-      <div class="col-md-4 text-start">
-        <img src="../images/images.png" alt="IMG" title="User1" width="25%">
-      </div>
-    <div class="col-md-8">
-        <div class="row">
-          <div class="col-md-2">
-            <select class="form-control w-100 me-2 rounded-0 custom-select text-dark font-weight-bold" name="type">
-              <option>Type</option>
-              <option>Movie</option>
-              <option>TV Show</option>
-            </select>
-          </div>
-          <div class="col-md-2">
-            <select class="form-control w-100 me-2 rounded-0 custom-select text-dark font-weight-bold" name="genre1">
-              <option>Genre 1</option>
-              <?php echo $options_genre_1; ?>
-            </select>
-          </div>
-          <div class="col-md-2">
-            <select class="form-control w-100 me-2 rounded-0 custom-select text-dark font-weight-bold" name="genre2">
-              <option>Genre 2</option>
-              <?php echo $options_genre_2; ?>
-            </select>
-          </div>
-          <div class="col-md-2">
-            <select class="form-control w-100 me-2 rounded-0 custom-select text-dark font-weight-bold" name="director">
-                <option>Réalisateur</option>
-                <?php echo $options_director; ?>
-            </select>
-          </div>
-          <div class="col-md-2">
-                <button class="btn btn-primary rounded-0 w-100 font-weight-bold" type="submit" name="submit">Recherche</button>
-          </div>
+    <header>
+        <div class="logo">
+            <img src="../images/logo.png" alt="Logo">
         </div>
-        </form>
+    </header>
+
+    <p class="prem">
+        Selectionner vos critères :
+    </p>
+
+    <div class="container">
+            <form action="enregistrementChoix_1ecran.php" method="post">
+            <div class="row">
+                <div class="col-md-4 text-start">
+                    <img src="../images/images.png" alt="IMG" title="User1" width="25%">
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <select class="form-control w-100 me-2 rounded-0 custom-select text-dark font-weight-bold" name="type">
+                                <option>Type</option>
+                                <option>Movie</option>
+                                <option>TV Show</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <select id="menu-1" class="mb-4 form-control w-100 me-2 rounded-0 custom-select text-dark font-weight-bold" name="genre[]">
+                                <option>Genre</option>
+                                <?php echo $options_genre; ?>
+                            </select>
+                            <button id="btn-1" type="button" class="add-button btn btn-light rounded-circle">
+                                <span class="font-weight-bold">+</span>
+                            </button>
+                        </div>
+                        <div class="col-md-2">
+                            <select id="menu-2" class="mb-4 form-control w-100 me-2 rounded-0 custom-select text-dark font-weight-bold" name="cast[]">
+                                <option>Acteur</option>
+                                <?php echo $options_cast; ?>
+                            </select>
+                            <button id="btn-2" type="button" class="add-button btn btn-light rounded-circle">
+                                <span class="font-weight-bold">+</span>
+                            </button>
+                        </div>
+                        <div class="col-md-2">
+                            <select id="menu-3" class="mb-4 form-control w-100 me-2 rounded-0 custom-select text-dark font-weight-bold" name="director[]">
+                                <option>Réalisateur</option>
+                                <?php echo $options_director; ?>
+                            </select>
+                            <button id="btn-3" type="button" class="add-button btn btn-light rounded-circle">
+                                <span class="font-weight-bold">+</span>
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <div class="fixed-bottom text-right mr-3 mb-3">
+      <button type="submit" class="btn btn-light rounded-pill text-dark font-weight-bold btn-lg">>>></button>
     </div>
-</div>
-</div>
+    </form>
 
-<div class='ml-auto'>
-    <a href="1ecran-user2.php">
-        <button class="btn btn-light rounded-circle">
-            <span class="font-weight-bold">+</span>
-        </button>
-        <span class="ml-2 text-white font-weight-bold">Ajouter un utilisateur</span>
-    </a>
-</div>
-</div>
+    <script>
+    // Sélectionne le bouton et le menu déroulant
+    const btn1 = document.querySelector('#btn-1');
+    const menu1 = document.querySelector('#menu-1');
+    const btn2 = document.querySelector('#btn-2');
+    const menu2 = document.querySelector('#menu-2');
+    const btn3 = document.querySelector('#btn-3');
+    const menu3 = document.querySelector('#menu-3');
 
-<div class="fixed-bottom text-right mr-3 mb-3">
-  <button type="button" class="btn btn-light rounded-pill text-dark font-weight-bold btn-lg" onclick="window.location.href='../contenus1.html'">
-    >>> 
-  </button>
-</div>
-</body>
+    // Sélectionne la div parente
+    const parentDiv = menu1.parentNode;
+    parentDiv.style.marginBottom = '10px';
+
+    // Ajoute un compteur pour suivre le nombre de menus créés
+    let counter = 1;
+
+    // Ajoute un écouteur d'événement sur chaque bouton
+    btn1.addEventListener('click', () => {
+        // Clone le menu déroulant
+        const newMenu = menu1.cloneNode(true);
+
+        // Ajoute le menu cloné à la fin de la div parente
+        parentDiv.appendChild(newMenu);
+
+        // Déplace le bouton "+" en dessous du nouveau menu déroulant
+        newMenu.parentNode.insertAdjacentElement('beforeend', btn1);
+
+        newMenu.style.marginBottom = '10px';
+
+        // Met à jour le texte du bouton avec le compteur
+        counter++;
+        btn1.querySelector('span').textContent = '+';
+        });
+
+    btn2.addEventListener('click', () => {
+        // Sélectionne la div parente
+        const parentDiv = menu2.parentNode;
+        parentDiv.style.marginBottom = '10px';
+
+        // Clone le menu déroulant
+        const newMenu = menu2.cloneNode(true);
+
+        // Ajoute le menu cloné à la fin de la div parente
+        parentDiv.appendChild(newMenu);
+
+        // Déplace le bouton "+" en dessous du nouveau menu déroulant
+        newMenu.parentNode.insertAdjacentElement('beforeend', btn2);
+
+        newMenu.style.marginBottom = '10px';
+
+        // Met à jour le texte du bouton avec le compteur
+        counter++;
+        btn2.querySelector('span').textContent = '+';
+        });
+
+    btn3.addEventListener('click', () => {
+        // Sélectionne la div parente
+        const parentDiv = menu3.parentNode;
+        parentDiv.style.marginBottom = '10px';
+
+        // Clone le menu déroulant
+        const newMenu = menu3.cloneNode(true);
+
+        // Ajoute le menu cloné à la fin de la div parente
+        parentDiv.appendChild(newMenu);
+
+        // Déplace le bouton "+" en dessous du nouveau menu déroulant
+        newMenu.parentNode.insertAdjacentElement('beforeend', btn3);
+
+        newMenu.style.marginBottom = '10px';
+
+        // Met à jour le texte du bouton avec le compteur
+        counter++;
+        btn3.querySelector('span').textContent = '+';
+        });
+
+    </script>
+
+    </body>
 </html>
