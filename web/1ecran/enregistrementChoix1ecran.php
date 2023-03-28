@@ -6,7 +6,7 @@ $bdd = getBD();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupère les choix de l'utilisateur pour chaque champ de formulaire
-    $type = $_POST['type'];
+    $type = isset($_POST['type']) ? $_POST['type'] : NULL;
     $genres = $_POST['genre'];
     $casts = $_POST['cast'];
     $directors = $_POST['director'];

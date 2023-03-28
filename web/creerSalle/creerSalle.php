@@ -4,20 +4,20 @@ session_start();
 require('../bd.php');
 $bdd = getBD();
 
-// Récupération des données pour le menu "Genre 1"
+// Récupération des données pour le menu "Genre"
 $sql = "SELECT genre FROM genre_new";
 $stmt = $bdd->query($sql);
-$options_genre_1 = '<option>Pas de préférence</option>';
+$options_genre = '<option>Pas de préférence</option>';
 while ($row = $stmt->fetch()) {
-    $options_genre_1 .= '<option>' . htmlspecialchars($row['genre']) . '</option>';
+    $options_genre .= '<option>' . htmlspecialchars($row['genre']) . '</option>';
 }
 
-// Récupération des données pour le menu "Genre 2"
-$sql = "SELECT genre FROM genre_new";
+// Récupération des données pour le menu "Cast"
+$sql = "SELECT cast FROM cast_new";
 $stmt = $bdd->query($sql);
-$options_genre_2 = '<option>Pas de préférence</option>';
+$options_cast = '<option>Pas de préférence</option>';
 while ($row = $stmt->fetch()) {
-    $options_genre_2 .= '<option>' . htmlspecialchars($row['genre']) . '</option>';
+    $options_cast .= '<option>' . htmlspecialchars($row['cast']) . '</option>';
 }
 
 // Récupération des données pour le menu "Director"
@@ -91,25 +91,25 @@ $stmt->execute(array('id_us' => $id_us, 'code' => $code, 'date' => $date));
             </select>
           </div>
           <div class="col-md-2">
-            <select class="form-control w-100 me-2 rounded-0 custom-select text-dark font-weight-bold" name="genre1">
-              <option>Genre 1</option>
-              <?php echo $options_genre_1; ?>
+            <select class="form-control w-100 me-2 rounded-0 custom-select text-dark font-weight-bold" name="genre[]">
+              <option>Genre</option>
+              <?php echo $options_genre; ?>
             </select>
           </div>
           <div class="col-md-2">
-            <select class="form-control w-100 me-2 rounded-0 custom-select text-dark font-weight-bold" name="genre2">
-              <option>Genre 2</option>
-              <?php echo $options_genre_2; ?>
+            <select class="form-control w-100 me-2 rounded-0 custom-select text-dark font-weight-bold" name="cast[]">
+              <option>Acteur</option>
+              <?php echo $options_cast; ?>
             </select>
           </div>
           <div class="col-md-2">
-            <select class="form-control w-100 me-2 rounded-0 custom-select text-dark font-weight-bold" name="director">
+            <select class="form-control w-100 me-2 rounded-0 custom-select text-dark font-weight-bold" name="director[]">
                 <option>Réalisateur</option>
                 <?php echo $options_director; ?>
             </select>
           </div>
-          <div class="col-md-2">
-                <button class="btn btn-primary rounded-0 w-100 font-weight-bold" type="submit" name="submit">Recherche</button>
+          <div class="fixed-bottom text-right mr-3 mb-3">
+              <button type="submit" class="btn btn-light rounded-pill text-dark font-weight-bold btn-lg">>>></button>
           </div>
         </div>
         </form>
