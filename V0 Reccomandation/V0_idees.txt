@@ -18,3 +18,9 @@ functions:
 (faire la moyenne donc chaque user il aura un correspondance avec chaque film qui passe le filtre manuel)
 -faire un df avec en colonnees tous les films qui ont passe le filtrage manuel et en colonne les users et en valeur la moyenne des correlations entre les films de l'historique et le film en question
 -finalment on fait la moyenne des correlations entre les user et le film en question et on trie par ordre decroissant
+
+
+
+QUESTIONS:
+Utiliser similarity meilleur que correlation (car on a pas de note)
+comment je code ça?
