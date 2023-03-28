@@ -7,7 +7,7 @@ $bdd = getBD();
 // Récupération des données pour le menu "Genre 1"
 $sql = "SELECT genre FROM genre_new";
 $stmt = $bdd->query($sql);
-$options_genre = '<option>Pas de préférence</option>';
+$options_genre = '';
 while ($row = $stmt->fetch()) {
     $options_genre .= '<option>' . htmlspecialchars($row['genre']) . '</option>';
 }
@@ -15,7 +15,7 @@ while ($row = $stmt->fetch()) {
 // Récupération des données pour le menu "Genre 2"
 $sql = "SELECT cast FROM cast_new";
 $stmt = $bdd->query($sql);
-$options_cast = '<option>Pas de préférence</option>';
+$options_cast = '';
 while ($row = $stmt->fetch()) {
     $options_cast .= '<option>' . htmlspecialchars($row['cast']) . '</option>';
 }

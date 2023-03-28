@@ -7,7 +7,7 @@ $bdd = getBD();
 // Récupération des données pour le menu "Genre"
 $sql = "SELECT genre FROM genre_new";
 $stmt = $bdd->query($sql);
-$options_genre = '<option>Pas de préférence</option>';
+$options_genre = '';
 while ($row = $stmt->fetch()) {
     $options_genre .= '<option>' . htmlspecialchars($row['genre']) . '</option>';
 }
@@ -15,7 +15,7 @@ while ($row = $stmt->fetch()) {
 // Récupération des données pour le menu "Cast"
 $sql = "SELECT cast FROM cast_new";
 $stmt = $bdd->query($sql);
-$options_cast = '<option>Pas de préférence</option>';
+$options_cast = '';
 while ($row = $stmt->fetch()) {
     $options_cast .= '<option>' . htmlspecialchars($row['cast']) . '</option>';
 }
@@ -70,7 +70,7 @@ $stmt->execute(array('id_us' => $id_us, 'code' => $code, 'date' => $date));
 	<a href="../index.html"><div class="logo">
 		<img src="../images/logo.png" alt="Logo">
 		</div></a>
-	<a href="../deconnexion.php" style="color:white; position:absolute; top:0; right:0; padding:20px;">Déconnexion</a>
+    <a href="../deconnexion.php" style="color:white; position:absolute; top:80px; right:0; padding:20px;">Déconnexion</a>
 </header>
 
 <p class="prem">
