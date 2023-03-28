@@ -37,11 +37,12 @@ while ($row = $stmt->fetch()) {
     <link href="../css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="../images/logo.png" alt="Logo">
-        </div>
-    </header>
+	<header>
+		<a href="index.html"><div class="logo">
+			<img src="images/logo.png" alt="Logo">
+			</div></a>
+		<a href="deconnexion.php" style="color:white; position:absolute; top:0; right:0; padding:20px;">Déconnexion</a>
+	</header>
 
     <p class="prem">
         Selectionner vos critères :

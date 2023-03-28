@@ -12,15 +12,12 @@ session_start();
 		
 	</head>
 	<body>
-		<header>
-			<nav>
-						<div class="logo">
-				<a href="#"><img src="images/logo.png" alt="Logo"></a>
-			</div>
-				
-			</nav>
-
-		</header>
+	<header>
+		<a href="index.html"><div class="logo">
+			<img src="images/logo.png" alt="Logo">
+			</div></a>
+		<a href="deconnexion.php" style="color:white; position:absolute; top:0; right:0; padding:20px;">Déconnexion</a>
+	</header>
 	
 		<main>
 		<h2 class="titre"> L'HISTORIQUE:</h2>

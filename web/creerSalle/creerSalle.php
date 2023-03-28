@@ -67,9 +67,10 @@ $stmt->execute(array('id_us' => $id_us, 'code' => $code, 'date' => $date));
 </head>
 <body>
 <header>
-    <div class="logo">
-        <img src="../images/logo.png" alt="Logo">
-    </div>
+	<a href="index.html"><div class="logo">
+		<img src="images/logo.png" alt="Logo">
+		</div></a>
+	<a href="deconnexion.php" style="color:white; position:absolute; top:0; right:0; padding:20px;">Déconnexion</a>
 </header>
 
 <p class="prem">
