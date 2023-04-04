@@ -19,9 +19,7 @@ header {
 }
 body {
   background-color: #000;
-
-}
-body {
+  font-family:arial;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -39,7 +37,7 @@ p {
   z-index: 3; /* bring p element to the front */
   position: relative; /* ensure z-index takes effect */
   font-size: 32px;
-  font-family:Arial;
+  font-family:arial;
   margin-right:20%;
   margin-left:20%;
 
@@ -61,10 +59,6 @@ p {
 .centre{
 text-align:center;}
 
-.adduser{
-    margin-top: 20px;
-}
-
 .custom-select {
 width: 100%;
 }
@@ -73,36 +67,6 @@ width: 100%;
   font-family: 'Inter';
   src: url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 } 
-.btn1{
-    margin-top:12%;
-    display: inline-block;
-    background-color : lightgrey;
-    color: black;
-    text-align: center;
-    font-size: 18px;
-    width: 500px;
-    height: 50px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin-left: 15%;
-    font-weight: bold;
-    font-family: arial;
-}
-.btn2{
-    display: inline-block;
-    background-color : lightgrey;
-    color: black;
-    text-align: center;
-    font-size: 18px;
-    width: 500px;
-    height: 50px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin-left: 15%;
-    margin-top: 3%;
-    font-weight: bold;
-    font-family: arial;
-}
 
 .prem{
     color: white;
