@@ -22,5 +22,5 @@ functions:
 
 
 QUESTIONS:
-Utiliser similarity meilleur que correlation (car on a pas de note)
-comment je code ça?
+Utiliser similarity meilleur que correlation (car on a pas de note) YES
+comment je code ça? -> generique(python doc + search OR  make it personally (weigh everything and "handcraft it") (mix it your completly free) YES
