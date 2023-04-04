@@ -6,10 +6,9 @@
  */
 
  html{
-  height: 100%;
-  overflow: hidden;
+  overflow: scroll;
   background-color: #000;
-} /* ca fait qu'on puisse pas scroll down */
+} 
 header {
   position: fixed;
   top: 0;
@@ -112,7 +111,7 @@ width: 100%;
     font-family: arial;
     font-weight: bold;
     font-style: italic;
-    font-size: 20px;
+    font-size: 10px;
     padding: 1%;
 }
 
