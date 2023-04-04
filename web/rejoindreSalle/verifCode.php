@@ -2,6 +2,8 @@
 session_start();
 // Récupérer le code entré par l'utilisateur
 $code = $_POST['Code'];
+// Stocker le code dans une variable de session
+$_SESSION['code'] = $code;
 
 // Connexion à la base de données
 require('../bd.php');
