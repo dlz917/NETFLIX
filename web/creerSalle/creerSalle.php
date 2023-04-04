@@ -179,28 +179,43 @@ $stmt = $bdd->prepare($sql);
 $stmt->execute(array('code' => $code));
 $users_choices_director = $stmt->fetchAll();
 
+//Récupération de l'e-mail des utilisateurs connectés à la salle
+$sql = "SELECT utilisateur.id_us, utilisateur.mail
+        FROM acceder, utilisateur
+        WHERE acceder.code = :code
+        AND acceder.id_us = utilisateur.id_us";
+$stmt = $bdd->prepare($sql);
+$stmt->execute(array('code' => $code));
+$users_email = $stmt->fetchAll();
+
 if ($users_choices_genre && $users_choices_cast && $users_choices_director) {
     // Affichage des choix de l'utilisateur
     echo '<div class="container">';
     echo '<p class="prem">Choix des utilisateurs qui ont rejoint votre salle:</p>';
-    foreach ($users_choices_genre as $choice) {
+    $image_counter = 1; // initialize the image counter variable
+    foreach ($users_email as $user) {
         // Affichage de l'utilisateur et des choix
-        echo '<div class="row mb-3"><div class="col-md-2"><img src="../images/user2.png" alt="IMG" title="User1" width="50%"></div>';
-        echo '<div class="col-md-10"><div class="row"><div class="col-md-4"><p class="prem">Utilisateur: ' . $choice['id_us'] . '</p></div>';
-        echo '<div class="col-md-4"><p class="prem">Genres: ' . $choice['genre'] . '</p></div>';
+        echo '<div class="row mb-3"><div class="col-md-2"><img src="../images/user'.$image_counter.'.png" alt="IMG" title="User'.$image_counter.'" width="50%"></div>';
+        echo '<div class="col-md-8"><div class="row"><div class="col-md-4"><p class="prem">Utilisateur: ' . $user['id_us'] . ' - ' . $user['mail'] . '</p></div>';
+        foreach ($users_choices_genre as $choice) {
+            if ($choice['id_us'] == $user['id_us']) {
+                echo '<div class="col-md-4"><p class="prem">Genres: ' . $choice['genre'] . '</p></div>';
+            }
+        }
         echo '<div class="col-md-4"><p class="prem">Acteurs: ';
         foreach ($users_choices_cast as $choice_cast) {
-            if ($choice_cast['id_us'] == $choice['id_us']) {
+            if ($choice_cast['id_us'] == $user['id_us']) {
                 echo $choice_cast['cast'] . ', ';
             }
         }
-        echo '</p></div></div><div class="row"><div class="col-md-12"><p class="prem">Réalisateurs: ';
+        echo '</p></div><div class="col-md-4"><p class="prem">Réalisateurs: ';
         foreach ($users_choices_director as $choice_director) {
-            if ($choice_director['id_us'] == $choice['id_us']) {
+            if ($choice_director['id_us'] == $user['id_us']) {
                 echo $choice_director['director'] . ', ';
             }
         }
         echo '</p></div></div></div></div>';
+        $image_counter++; // increment the image counter variable for the next user
     }
     echo '</div>';
 } else {
