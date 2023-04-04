@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<?php
+session_start();
+?>
+<!DOCTYPE html>
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
@@ -8,9 +11,10 @@
 	</head>
 	<body>
 		<header>
-			<a href="index.html"><div class="logo">
+			<a href="index.php"><div class="logo">
 				<img src="images/logo.png" alt="Logo">
 			</div></a>
+			<span style="color:white; position:center;">Bienvenue sur notre site <?php echo $_SESSION['utilisateur']['mail']; ?> !</span>
 			<a href="deconnexion.php" style="color:white; position:absolute; top:0; right:0; padding:20px;">Déconnexion</a>
 		</header>
 

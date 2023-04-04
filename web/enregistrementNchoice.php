@@ -20,8 +20,9 @@
 			$mdp = md5($_POST['mdp']);
 			$_SESSION['utilisateur'] = array(
 			'id' => $utilisateur['id_us'],
-			'mail' => $utilisateur['mail']);
-			header('Location: index.html');
+			'mail' => $email
+			);
+			header('Location: index.php');
 			exit();
 	} else {
 		header('Location: connexion.php?mail='.$_POST["mail"]);
@@ -46,5 +47,6 @@
     </body>
     
 </html>
+
 
 	
