@@ -22,7 +22,7 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
 	</head>
 	<body>
 	<header>
-		<a href="../index.html"><div class="logo">
+		<a href="../index.php"><div class="logo">
 			<img src="../images/logo.png" alt="Logo">
 			</div></a>
 		<a href="../deconnexion.php" style="color:white; position:absolute; top:0; right:0; padding:20px;">Déconnexion</a>
