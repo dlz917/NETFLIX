@@ -218,35 +218,42 @@ $stmt->execute(array('code' => $code));
 $admin_email = $stmt->fetchAll();
 
 if ($admin_choices_genre && $admin_choices_cast && $admin_choices_director) {
-    // Affichage des choix de l'admin
+    // Affichage des choix de l'utilisateur
     echo '<div class="container">';
     echo '<p class="prem">Choix de l\'administrateur de votre salle:</p>';
+
     foreach ($admin_email as $admin) {
         // Affichage de l'utilisateur et des choix
         echo '<div class="row mb-3"><div class="col-md-2"><img src="../images/images.png" alt="IMG" title="adminIMG" width="50%"></div>';
         echo '<div class="col-md-8"><div class="row"><div class="col-md-4"><p class="prem">Utilisateur: ' . $admin['id_us'] . ' - ' . $admin['mail'] . '</p></div>';
+        echo '<div class="col-md-8"><p class="prem">Genres: ';
+        $genres = array();
+        $actors = array();
+        $directors = array();
         foreach ($admin_choices_genre as $choice) {
             if ($choice['id_us'] == $admin['id_us']) {
-                echo '<div class="col-md-4"><p class="prem">Genres: ' . $choice['genre'] . '</p></div>';
+                $genres[] = $choice['genre'];
             }
         }
-        echo '<div class="col-md-4"><p class="prem">Acteurs: ';
+        echo implode(', ', $genres) . '<br>';
+        echo 'Acteurs: ';
         foreach ($admin_choices_cast as $choice_cast) {
             if ($choice_cast['id_us'] == $admin['id_us']) {
-                echo $choice_cast['cast'] . ', ';
+                $actors[] = $choice_cast['cast'];
             }
         }
-        echo '</p></div><div class="col-md-4"><p class="prem">Réalisateurs: ';
+        echo implode(', ', $actors) . '<br>';
+        echo 'Réalisateurs: ';
         foreach ($admin_choices_director as $choice_director) {
             if ($choice_director['id_us'] == $admin['id_us']) {
-                echo $choice_director['director'] . ', ';
+                $directors[] = $choice_director['director'];
             }
         }
-        echo '</p></div></div></div></div>';
+        echo implode(', ', $directors) . '</p></div></div></div></div>';
     }
     echo '</div>';
 } else {
-    echo 'Aucun choix de l\'administrateur de la salle n\'a été trouvé.';
+    echo 'Aucun choix d\'utilisateur n\'a été trouvé.';
 }
 
 // Récupération des choix de genre des utilisateurs connectés à la salle
@@ -306,30 +313,37 @@ if ($users_choices_genre && $users_choices_cast && $users_choices_director) {
         // Affichage de l'utilisateur et des choix
         echo '<div class="row mb-3"><div class="col-md-2"><img src="../images/user'.$image_counter.'.png" alt="IMG" title="User'.$image_counter.'" width="50%"></div>';
         echo '<div class="col-md-8"><div class="row"><div class="col-md-4"><p class="prem">Utilisateur: ' . $user['id_us'] . ' - ' . $user['mail'] . '</p></div>';
+        echo '<div class="col-md-8"><p class="prem">Genres: ';
+        $genres = array();
+        $actors = array();
+        $directors = array();
         foreach ($users_choices_genre as $choice) {
             if ($choice['id_us'] == $user['id_us']) {
-                echo '<div class="col-md-4"><p class="prem">Genres: ' . $choice['genre'] . '</p></div>';
+                $genres[] = $choice['genre'];
             }
         }
-        echo '<div class="col-md-4"><p class="prem">Acteurs: ';
+        echo implode(', ', $genres) . '<br>';
+        echo 'Acteurs: ';
         foreach ($users_choices_cast as $choice_cast) {
             if ($choice_cast['id_us'] == $user['id_us']) {
-                echo $choice_cast['cast'] . ', ';
+                $actors[] = $choice_cast['cast'];
             }
         }
-        echo '</p></div><div class="col-md-4"><p class="prem">Réalisateurs: ';
+        echo implode(', ', $actors) . '<br>';
+        echo 'Réalisateurs: ';
         foreach ($users_choices_director as $choice_director) {
             if ($choice_director['id_us'] == $user['id_us']) {
-                echo $choice_director['director'] . ', ';
+                $directors[] = $choice_director['director'];
             }
         }
-        echo '</p></div></div></div></div>';
-        $image_counter++; // increment the image counter variable for the next user
+        echo implode(', ', $directors) . '</p></div></div></div></div>';
+        $image_counter = ($image_counter % 3) + 1; // increment the image counter variable for the next user and reset it to 1 if it reaches 3
     }
     echo '</div>';
 } else {
     echo 'Aucun choix d\'utilisateur n\'a été trouvé.';
 }
+
 ?>
 </body>
 </html>
