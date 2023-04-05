@@ -6,8 +6,7 @@ session_start();
 	<head>
 		<meta charset="utf-8">
 		<title>Index</title>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="vierge.css">
+		<link href="css/bootstrap.css" rel="stylesheet">
 	</head>
 	<body>
 		<header>
