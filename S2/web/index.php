@@ -7,7 +7,7 @@ session_start();
 		<meta charset="utf-8">
 		<title>Index</title>
 		<link href="css/bootstrap.css" rel="stylesheet">
-		<link href="css/vierge.css/bootstrap.css" rel="stylesheet">
+		<link href="css/vierge.css" rel="stylesheet">
 	</head>
 	<body>
 		<header>
