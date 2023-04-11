@@ -29,10 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $cast = isset($casts[$i]) ? $casts[$i] : NULL;
         $director = isset($directors[$i]) ? $directors[$i] : NULL;
 
+        // Récupère la valeur de l'ordre à enregistrer
+        $ordre = isset($_GET['ordre']) && $_GET['ordre'] == 1 ? 1 : ($_GET['ordre'] == 2 ? 2 : 3);
+
         // Insertion des données dans la table CHOIX
         $sql = "INSERT INTO choix (ordre, date, type) VALUES (?,?,?)";
         $stmt = $bdd->prepare($sql);
-        $stmt->execute([1, $date, $type]);
+        $stmt->execute([$ordre, $date, $type]);
 
         //Recherche de l'identifiant du choix
         $stmt = $bdd->prepare('SELECT id_choix FROM choix WHERE date = ?');

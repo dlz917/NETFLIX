@@ -49,7 +49,7 @@ while ($row = $stmt->fetch()) {
     </p>
 
     <div class="container">
-            <form action="enregistrementChoix1ecran.php" method="post">
+            <form action="enregistrementChoix1ecran.php?ordre=1" method="POST">
             <div class="row">
                 <div class="col-md-4 text-start">
                     <img src="../images/images.png" alt="IMG" title="User1" width="25%">

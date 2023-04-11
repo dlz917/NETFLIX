@@ -90,7 +90,7 @@ if(isset($_SESSION['utilisateur'])) {
     Envoyer votre code salle aux utilisateurs souhaités puis remplisser vos critères :
 </p>
 <div class="container">
-<form action="../1ecran/enregistrementChoix1ecran.php" method="post">
+<form action="../1ecran/enregistrementChoix1ecran.php?ordre=2" method="post">
     <div class="row">
       <div class="col-md-4 text-start">
         <img src="../images/images.png" alt="IMG" title="User1" width="25%">
@@ -236,6 +236,7 @@ $sql = "SELECT utilisateur.id_us, genre_new.genre
         AND acceder.id_us = utilisateur.id_us
         AND utilisateur.id_us = faire.id_us
         AND faire.id_choix = choix.id_choix
+        AND choix.ordre = 2
         AND choix.id_choix = avoirg.id_choix
         AND avoirg.id_genre = genre_new.id_genre";
 $stmt = $bdd->prepare($sql);
@@ -249,6 +250,7 @@ $sql = "SELECT utilisateur.id_us, cast_new.cast
         AND acceder.id_us = utilisateur.id_us
         AND utilisateur.id_us = faire.id_us
         AND faire.id_choix = choix.id_choix
+        AND choix.ordre = 2
         AND choix.id_choix = avoirc.id_choix
         AND avoirc.id_cast = cast_new.id_cast";
 $stmt = $bdd->prepare($sql);
@@ -262,6 +264,7 @@ $sql = "SELECT utilisateur.id_us, director_new.director
         AND acceder.id_us = utilisateur.id_us
         AND utilisateur.id_us = faire.id_us
         AND faire.id_choix = choix.id_choix
+        AND choix.ordre = 2
         AND choix.id_choix = avoird.id_choix
         AND avoird.id_direc = director_new.id_direc";
 $stmt = $bdd->prepare($sql);
