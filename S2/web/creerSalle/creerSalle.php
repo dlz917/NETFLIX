@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 // Connexion à la base de données MySQL
 require('../bd.php');
@@ -67,7 +67,7 @@ if(isset($_SESSION['utilisateur'])) {
     header('Location: ../connexion.php');
     exit();
 }
-
+$_SESSION['code'] = $code;
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +76,7 @@ if(isset($_SESSION['utilisateur'])) {
     <meta charset="utf-8">
     <title>Un seul écran</title>
     <link href="../css/bootstrap.css" rel="stylesheet">
-
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <header>
@@ -90,7 +90,7 @@ if(isset($_SESSION['utilisateur'])) {
     Envoyer votre code salle aux utilisateurs souhaités puis remplisser vos critères :
 </p>
 <div class="container">
-<form action="../1ecran/enregistrementChoix1ecran.php?ordre=2" method="post">
+<form action="../1ecran/enregistrementChoix1ecran.php" method="post">
     <div class="row">
       <div class="col-md-4 text-start">
         <img src="../images/images.png" alt="IMG" title="User1" width="25%">
@@ -224,7 +224,18 @@ if(isset($_SESSION['utilisateur'])) {
         counter++;
         btn3.querySelector('span').textContent = '+';
         });
-
+ $(function() {
+            setInterval(function() {
+                $.ajax({
+                    url: 'affiche_message.php',
+                    type: 'GET',
+                    success: function(data) {
+                        $('#messages').html(data);
+                    }
+                });
+            }, 5000);
+        });
+    </script>
     </script>
 
 <?php
@@ -236,7 +247,6 @@ $sql = "SELECT utilisateur.id_us, genre_new.genre
         AND acceder.id_us = utilisateur.id_us
         AND utilisateur.id_us = faire.id_us
         AND faire.id_choix = choix.id_choix
-        AND choix.ordre = 2
         AND choix.id_choix = avoirg.id_choix
         AND avoirg.id_genre = genre_new.id_genre";
 $stmt = $bdd->prepare($sql);
@@ -250,7 +260,6 @@ $sql = "SELECT utilisateur.id_us, cast_new.cast
         AND acceder.id_us = utilisateur.id_us
         AND utilisateur.id_us = faire.id_us
         AND faire.id_choix = choix.id_choix
-        AND choix.ordre = 2
         AND choix.id_choix = avoirc.id_choix
         AND avoirc.id_cast = cast_new.id_cast";
 $stmt = $bdd->prepare($sql);
@@ -264,7 +273,6 @@ $sql = "SELECT utilisateur.id_us, director_new.director
         AND acceder.id_us = utilisateur.id_us
         AND utilisateur.id_us = faire.id_us
         AND faire.id_choix = choix.id_choix
-        AND choix.ordre = 2
         AND choix.id_choix = avoird.id_choix
         AND avoird.id_direc = director_new.id_direc";
 $stmt = $bdd->prepare($sql);
@@ -321,6 +329,25 @@ if ($users_choices_genre && $users_choices_cast && $users_choices_director) {
 }
 
 ?>
+						<!-- Le forumulaire du tchat-->
+
+ 			<form action="envoyer_message.php" method="POST">
+ 			
+ 			<input type="text" name="pseudo" id="pseudo" placeholder="pseudo" value="<?php if(isset($_SESSION['pseudo'])) { echo $_SESSION['pseudo']; } ?>">
+
+ 			<br><br>
+ 			 <textarea name="texte" ></textarea>
+ 			 <br>
+ 			<!--<input type="text" id="texte" name ="texte" placeholder= " type in your message">-->
+ 			
+ 			<input type="submit" name="valider"> 
+
+ 			</form>
+ 			<div id="messages">
+        <!-- Le contenu de la page sera mis à jour ici -->
+    </div>
+ 			<!-- appel de la page affichage message pour afficher message -->
+ 			
 
 </body>
 </html>
