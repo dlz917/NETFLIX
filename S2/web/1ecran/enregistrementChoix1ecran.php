@@ -68,6 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }}
 
     // Rediriger l'utilisateur vers la page des résultats
-    header('Location: ../contenus1.html');
+    header('Location: ../contenus1.php');
     exit();
 ?>
