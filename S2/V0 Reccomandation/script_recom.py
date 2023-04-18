@@ -20,8 +20,19 @@ requete=sys.argv[2]
 # Execute first SQL query to get historical data
 historique = "select id_show from regarder where id_us = " + str(user) + ";"
 historique = pd.read_sql(historique, cnxn)
-t = historique['id_show'].tolist()
-requete_historique = "SELECT show_new.*, GROUP_CONCAT(DISTINCT jouer.id_cast SEPARATOR ',') as cast_ids, GROUP_CONCAT(DISTINCT produire.id_direc SEPARATOR ',') as director_ids,GROUP_CONCAT(DISTINCT etre.id_genre SEPARATOR ',') as genre_ids FROM show_new LEFT JOIN jouer ON jouer.id_show = show_new.id_show LEFT JOIN produire ON produire.id_show = show_new.id_show LEFT JOIN etre ON etre.id_show = show_new.id_show  WHERE show_new.id_show IN {} GROUP BY show_new.id_show; ".format(t)
+
+if historique.empty:
+   films_filtres = pd.read_sql(requete, cnxn)
+   films_filtres = films_filtres['id_show'].tolist()
+   subprocess.run(['php', 'contenus1.php', films_filtres])
+   exit() #???
+
+else:
+    t = historique['id_show'].tolist()
+    if len (t) > 1:
+        requete_historique = "SELECT show_new.*, GROUP_CONCAT(DISTINCT jouer.id_cast SEPARATOR ',') as cast_ids, GROUP_CONCAT(DISTINCT produire.id_direc SEPARATOR ',') as director_ids,GROUP_CONCAT(DISTINCT etre.id_genre SEPARATOR ',') as genre_ids FROM show_new LEFT JOIN jouer ON jouer.id_show = show_new.id_show LEFT JOIN produire ON produire.id_show = show_new.id_show LEFT JOIN etre ON etre.id_show = show_new.id_show  WHERE show_new.id_show IN {} GROUP BY show_new.id_show; ".format(t)
+    else:
+        requete_historique = "SELECT show_new.*, GROUP_CONCAT(DISTINCT jouer.id_cast SEPARATOR ',') as cast_ids, GROUP_CONCAT(DISTINCT produire.id_direc SEPARATOR ',') as director_ids,GROUP_CONCAT(DISTINCT etre.id_genre SEPARATOR ',') as genre_ids FROM show_new LEFT JOIN jouer ON jouer.id_show = show_new.id_show LEFT JOIN produire ON produire.id_show = show_new.id_show LEFT JOIN etre ON etre.id_show = show_new.id_show  WHERE show_new.id_show = {} GROUP BY show_new.id_show; ".format(t)
 
 # Execute second SQL query to get filtered films
 films_historiques = pd.read_sql(requete_historique, cnxn)
@@ -34,6 +45,7 @@ resultat=calculate_similarity(films_filtres, films_historiques)
 id_list = resultat['id_show'].tolist()
 
 # Send to php script
-subprocess.run(['php', '?¿?.php', id_list])
+subprocess.run(['php', 'contenus1.php', id_list])
+exit()  #???
 
 

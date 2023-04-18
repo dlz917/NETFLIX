@@ -7,8 +7,9 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 def list_similarity(list1, list2):
-    if len(list1) == 0 or len(list2) == 0:
+    if (list1 is None or list2 is None) or (len(list1) == 0 or len(list2) == 0):        
         return 0
+    
     set1 = set(map(tuple, list1))
     set2 = set(map(tuple, list2))
 
