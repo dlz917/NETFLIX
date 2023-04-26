@@ -56,11 +56,12 @@ session_start();
             echo "</p>";
 
             ?>
-            
-    <form action="enregistrementHistorique.php?ordre=1" method="POST">
-    	<div class="fixed-bottom text-right mr-3 mb-3">
-      		<button type="submit" name="id_show" class="btn btn-light rounded-pill text-dark font-weight-bold btn-lg" value="<?php echo $id_show; ?>">Valider mon choix</button>
-    	</div>
+
+    <form action="enregistrementHistorique.php" method="POST">
+        <div class="fixed-bottom text-right mr-3 mb-3">
+        <button type="submit" name="id_show" class="btn btn-light rounded-pill text-dark font-weight-bold btn-lg" value="<?php echo $id_show; ?>">Valider mon choix</button>
+        </div>
     </form>
+
     </body>
 </html>
