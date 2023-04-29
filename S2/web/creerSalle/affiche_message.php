@@ -7,7 +7,7 @@ session_start();
 require('../bd.php');
 $bdd = getBD();
 $code = $_SESSION['code'];// session créer dans CréerSalle
-$pseudo=$_POST['pseudo'];
+$pseudo = isset($_POST['pseudo']) ? $_POST['pseudo'] : '';
 
 //requete pour récuperer les messages selon la salle
 $recupMessage = $bdd->prepare('SELECT message.texte, utilisateur.id_us, message.pseudo FROM message, deposer, utilisateur
