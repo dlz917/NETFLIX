@@ -10,7 +10,7 @@ require('../bd.php');
 $bdd = getBD();
 
 // Préparer la requête SQL pour vérifier si le code existe dans la table Salle
-$sql = "SELECT * FROM salle WHERE code = ?";
+$sql = "SELECT * FROM salle WHERE code = ? AND en_cours=1";
 $stmt = $bdd->prepare($sql);
 $stmt->execute([$code]);
 
@@ -45,4 +45,3 @@ if (count($rows) > 0) {
 $stmt->closeCursor();
 $conn = null;
 ?>
-
