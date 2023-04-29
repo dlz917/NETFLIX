@@ -13,11 +13,16 @@ $code = isset($_SESSION['code']) ? $_SESSION['code'] : '0';
 $sql = "INSERT INTO regarder (date, id_show, id_us, code) VALUES (?,?,?,?)";
 $stmt = $bdd->prepare($sql);
 $stmt->execute([$date, $id_show, $id_us, $code]);
-echo $sql;
+
+if ($code != '0'){
+	// Mettre à jour la variable en_cours à 0 dans la table salle
+	$sql2 = "UPDATE salle SET en_cours = 0 WHERE code = ?";
+	$stmt2 = $bdd->prepare($sql2);
+	$stmt2->execute([$code]);
+}
 
 // Rediriger l'utilisateur vers la page de fin
 header('Location: bye.html');
 exit();
-    
-    
 ?>
+
