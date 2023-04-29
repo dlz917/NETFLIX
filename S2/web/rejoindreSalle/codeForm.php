@@ -1,16 +1,16 @@
 <?php
-// Vérifier si une erreur a été signalée dans l'URL
+// VÃ©rifier si une erreur a Ã©tÃ© signalÃ©e dans l'URL
 if (isset($_GET['error']) && $_GET['error'] == 1) {
     // Afficher une alerte
-    echo '<script>alert("Le code entré n\'est pas valide. Veuillez réessayer.")</script>';
+    echo '<script>alert("Le code entrï¿½ n\'est pas valide. Veuillez rï¿½essayer.")</script>';
 }
 ?>
 <?php
 session_start();
-// Vérifier si une erreur a été signalée dans l'URL
+// Vï¿½rifier si une erreur a Ã©tÃ© signalÃ©e dans l'URL
 if (isset($_GET['error']) && $_GET['error'] == 1) {
     // Afficher une alerte
-    echo '<script>alert("Le code entré n\'est pas valide. Veuillez réessayer.")</script>';
+    echo '<script>alert("Le code entrÃ© n\'est pas valide. Veuillez rÃ©essayer.")</script>';
 }
 ?>
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
 		<a href="../index.php"><div class="logo">
 			<img src="../images/logo.png" alt="Logo">
 			</div></a>
-		<a href="../deconnexion.php" style="color:white; position:absolute; top:0; right:0; padding:20px;">Déconnexion</a>
+		<a href="../deconnexion.php" style="color:white; position:absolute; top:0; right:0; padding:20px;">DÃ©connexion</a>
 	</header>
 	<form action="./verifCode.php" method="post" autocomplete="off">
 		<div class="codeForm">

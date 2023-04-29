@@ -1,4 +1,3 @@
-
 <?php
 // ouvre session 
 session_start();
@@ -20,7 +19,6 @@ session_start();
 	</header>
 	
 		<main>
-		<h2 class="titre"> L'HISTORIQUE:</h2>
 		
 		<div class="d-flex justify-content-center align-items-center table-container">
 		
@@ -37,23 +35,24 @@ if(isset($_SESSION['utilisateur'])){
     $id_us = $_SESSION['utilisateur']['id'];
 
     // Préparer la requête SQL
-    $rep = $bdd->prepare("SELECT show_new.title, genre_new.genre, regarder.date
-                          FROM show_new
-                          JOIN etre ON show_new.id_show = etre.id_show
-                          JOIN genre_new ON etre.id_genre = genre_new.id_genre
-                          JOIN regarder ON show_new.id_show = regarder.id_show
-                          WHERE regarder.id_us = :id_us");
+    $rep = $bdd->prepare("SELECT DISTINCT show_new.title, GROUP_CONCAT(genre_new.genre SEPARATOR ', ') AS genres, regarder.date
+                      FROM show_new
+                      JOIN etre ON show_new.id_show = etre.id_show
+                      JOIN genre_new ON etre.id_genre = genre_new.id_genre
+                      JOIN regarder ON show_new.id_show = regarder.id_show
+                      WHERE regarder.id_us = :id_us
+                      GROUP BY show_new.title, regarder.date
+                      ORDER BY regarder.date DESC");
     $rep->execute(array(':id_us' => $id_us));
 
     // Vérifier si la requête retourne des résultats
     if ($rep->rowCount() > 0) {
         // Afficher les résultats dans un tableau
         echo '<table>';
-        echo '<tr><th>Titre </th><th>Genre </th><th>Date </th></tr>';
+        echo '<tr><th>Titre </th><th>Date </th></tr>';
         while($row = $rep->fetch()){
             echo '<tr>';
             echo '<td>' . $row['title'] . '&nbsp;</td>';
-            echo '<td>' . $row['genre'] . '&nbsp;</td>';
             echo '<td>' . $row['date'] . '&nbsp;</td>';
             echo '</tr>';
         }
@@ -93,7 +92,7 @@ echo "<p style='font-family: Arial, sans-serif; font-size: 18px; color: #FFFFF;'
 </style>
   
 
-<button type="button" class="btn btn-secondary bg-secondary"><a href="index.html" class="text-white">Retour</a></button>
+<button type="button" class="btn btn-secondary bg-secondary"><a href="index.php" class="text-white">Retour</a></button>
 
 
 	</body>

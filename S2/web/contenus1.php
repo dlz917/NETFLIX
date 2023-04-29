@@ -73,8 +73,6 @@ $result = $stmt->fetchAll();
 		<a href="deconnexion.php" style="color:white; position:absolute; top:0; right:0; padding:20px;">Déconnexion</a>
 	</header>
 	<div class="container">
-	<h1 class="prem">
-    Cliquez sur le contenu pour voir la description :</h1>
 
 	<div class="d-flex flex-column justify-content-center align-items-center" style="height: 50vh; margin-bottom: 50px;">
     <?php 
