@@ -2,12 +2,12 @@
 // Vérifier si une erreur a été signalée dans l'URL
 if (isset($_GET['error']) && $_GET['error'] == 1) {
     // Afficher une alerte
-    echo '<script>alert("Le code entr� n\'est pas valide. Veuillez r�essayer.")</script>';
+    echo '<script>alert("Le code entré n\'est pas valide. Veuillez réessayer.")</script>';
 }
 ?>
 <?php
 session_start();
-// V�rifier si une erreur a été signalée dans l'URL
+// Vérifier si une erreur a été signalée dans l'URL
 if (isset($_GET['error']) && $_GET['error'] == 1) {
     // Afficher une alerte
     echo '<script>alert("Le code entré n\'est pas valide. Veuillez réessayer.")</script>';
@@ -18,14 +18,14 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
 	<head>
 		<title>Nchoice | Saisir son code </title>
 		<link rel="stylesheet" href="../css/bootstrap.css" type="text/css" media="screen"/>
-		<meta charset="UTF-8">>
+		<meta charset="UTF-8">
 	</head>
 	<body>
 	<header>
 		<a href="../index.php"><div class="logo">
 			<img src="../images/logo.png" alt="Logo">
 			</div></a>
-		<a href="../deconnexion.php" style="color:white; position:absolute; top:0; right:0; padding:20px;">Déconnexion</a>
+		<a href="../deconnexion.php" style="color:white; position:absolute; top:0; right:0; padding:20px;">Deconnexion</a>
 	</header>
 	<form action="./verifCode.php" method="post" autocomplete="off">
 		<div class="codeForm">
