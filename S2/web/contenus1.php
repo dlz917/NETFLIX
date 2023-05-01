@@ -3,16 +3,15 @@ ini_set('memory_limit', '256M'); // set memory limit to 256MB
 
 session_start();
 
-// Vérification que l'utilisateur a sélectionné au moins une catégorie (en l'occurence le type car le plus simple)
-//if(!isset($_SESSION['utilisateur']['type']) || empty($_SESSION['utilisateur']['type'])) {
-  //  header("Location: " . $_SERVER["HTTP_REFERER"]);
-//}
-
 // Récupération des choix de l'utilisateur
 $type = isset( $_SESSION['utilisateur']['type']) ? $_SESSION['utilisateur']['type'] : [];
+echo $type;
 $genre = isset($_SESSION['utilisateur']['genre']) ? $_SESSION['utilisateur']['genre'] : [];
+print_r($genre);
 $cast = isset($_SESSION['utilisateur']['cast']) ? $_SESSION['utilisateur']['cast'] : [];
+print_r($cast);
 $director = isset($_SESSION['utilisateur']['director']) ? $_SESSION['utilisateur']['director'] : [];
+print_r($director);
 
 // Connexion à la base de données MySQL
 require('bd.php');
@@ -87,10 +86,9 @@ foreach ($decoded_json as $id) {
 
 $order_by = rtrim($order_by, ", ");
 $query .= "$order_by LIMIT 30;";
-echo $query;
+
 
 $stmt = $bdd->prepare($query);
-echo $query;
 $stmt->execute(array());
 $result = $stmt->fetchAll();
 ?>

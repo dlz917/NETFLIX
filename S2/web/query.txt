@@ -5,4 +5,4 @@ LEFT JOIN produire ON produire.id_show = show_new.id_show
 LEFT JOIN etre ON etre.id_show = show_new.id_show 
 LEFT JOIN director_new on director_new.id_direc = produire.id_direc 
 LEFT JOIN cast_new on cast_new.id_cast = jouer.id_cast 
-LEFT JOIN genre_new on genre_new.id_genre = etre.id_genre AND show_new.type = 'TV Show'  AND genre_new.genre IN ("Horror Movies") GROUP BY show_new.id_show ORDER BY RAND() LIMIT 10
+LEFT JOIN genre_new on genre_new.id_genre = etre.id_genre AND show_new.type = 'Movie'  AND genre_new.genre IN ("TV Comedies") GROUP BY show_new.id_show ORDER BY RAND() LIMIT 10

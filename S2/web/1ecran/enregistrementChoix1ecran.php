@@ -7,9 +7,13 @@ $bdd = getBD();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupère les choix de l'utilisateur pour chaque champ de formulaire
     $type = isset($_POST['type']) ? $_POST['type'] : NULL;
+    $_SESSION['utilisateur']['type'] = $type;
     $genres = $_POST['genre'];
+    $_SESSION['utilisateur']['genre'] = $genres;
     $casts = $_POST['cast'];
+    $_SESSION['utilisateur']['cast'] = $casts;
     $directors = $_POST['director'];
+    $_SESSION['utilisateur']['director'] = $directors;
     $date = date('Y-m-d H:i:s');
     if(isset($_SESSION['utilisateur'])) {
         $id_us = $_SESSION['utilisateur']['id'];
