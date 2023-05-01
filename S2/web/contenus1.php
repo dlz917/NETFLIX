@@ -1,6 +1,5 @@
 <?php
 ini_set('memory_limit', '256M'); // set memory limit to 256MB
-$t0 = time();
 
 session_start();
 
@@ -10,7 +9,7 @@ session_start();
 //}
 
 // Récupération des choix de l'utilisateur
-$type = $_SESSION['utilisateur']['type'];
+$type = isset( $_SESSION['utilisateur']['type']) ? $_SESSION['utilisateur']['type'] : [];
 $genre = isset($_SESSION['utilisateur']['genre']) ? $_SESSION['utilisateur']['genre'] : [];
 $cast = isset($_SESSION['utilisateur']['cast']) ? $_SESSION['utilisateur']['cast'] : [];
 $director = isset($_SESSION['utilisateur']['director']) ? $_SESSION['utilisateur']['director'] : [];
@@ -20,16 +19,6 @@ require('bd.php');
 $bdd = getBD();
 
 // Requête pour récupérer les contenus correspondants aux choix de l'utilisateur
-<<<<<<< Updated upstream
-$query = "SELECT DISTINCT s.id_show, s.title, c.cast, d.director, g.genre
-		FROM SHOW_NEW s
-		INNER JOIN JOUER j ON s.id_show = j.id_show
-		INNER JOIN CAST_NEW c ON j.id_cast = c.id_cast
-		INNER JOIN PRODUIRE p ON s.id_show = p.id_show
-		INNER JOIN DIRECTOR_NEW d ON p.id_direc = d.id_direc
-		INNER JOIN ETRE e ON s.id_show = e.id_show
-		INNER JOIN GENRE_NEW g ON e.id_genre = g.id_genre;";
-=======
 $query = "SELECT show_new.*, GROUP_CONCAT(DISTINCT jouer.id_cast SEPARATOR ',') as cast_ids, GROUP_CONCAT(DISTINCT produire.id_direc SEPARATOR ',') as director_ids,GROUP_CONCAT(DISTINCT etre.id_genre SEPARATOR ',') as genre_ids 
 FROM show_new 
 LEFT JOIN jouer ON jouer.id_show = show_new.id_show 
@@ -86,32 +75,10 @@ $films = array_map(function($value) {
 }, $decoded_json);
 
 $string = implode(',', $films);
->>>>>>> Stashed changes
 
 $query= str_replace("ORDER BY RAND() LIMIT 10", "", $query);
 $query=str_replace("GROUP_CONCAT(DISTINCT produire.id_direc SEPARATOR ',') as director_ids", "director_new.director", $query);
 
-<<<<<<< Updated upstream
-if(isset($_SESSION['utilisateur']['type']) && !empty($_SESSION['utilisateur']['type'])) {
-    $query .= " WHERE s.type = $type";
-}
-
-if(is_array($genre) && !empty($genre) && $genre != 'Genre') {
-    $genreStr = implode(',', $genre);
-    $query .= " AND g.genre IN ($genreStr)";
-}
-
-if(is_array($cast) && !empty($cast) && $cast != 'Acteur') {
-    $castStr = implode(',', $cast);
-    $query .= " AND c.cast IN ($castStr)";
-}
-if(is_array($director) && !empty($director) && $director != 'Réalisateur') {
-    $directorStr = implode(',', $director);
-    $query .= " AND d.director IN ($directorStr)";
-}
-
-$query .= " GROUP BY s.title ORDER BY RAND() LIMIT 10";
-=======
 $order_by = " ORDER BY ";
 foreach ($decoded_json as $id) {
     $order_by .= "show_new.id_show = '$id' DESC, ";
@@ -121,7 +88,6 @@ foreach ($decoded_json as $id) {
 $order_by = rtrim($order_by, ", ");
 $query .= "$order_by LIMIT 30;";
 echo $query;
->>>>>>> Stashed changes
 
 $stmt = $bdd->prepare($query);
 echo $query;
@@ -150,8 +116,6 @@ $result = $stmt->fetchAll();
 
 	<div class="d-flex flex-column justify-content-center align-items-center" style="height: 50vh; margin-bottom: 50px;">
     <?php 
-        $filmsDejaAffiches = array(); // tableau pour stocker les films déjà affichés
-        $filmsAvecGenres = array(); // tableau pour stocker les films avec leurs genres respectifs
         foreach ($result as $row) { 
             $film = $row['title'];
     ?>
