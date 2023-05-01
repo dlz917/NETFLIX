@@ -9,6 +9,8 @@ from nltk.stem.wordnet import WordNetLemmatizer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from recomandation import list_similarity, preprocess_text , calculate_similarity
+import time
+
 
 # Connect to MySQL database
 cnxn = pymysql.connect(user="nchoice", password="jenesaispas", host="localhost", database="nchoice")
@@ -48,4 +50,12 @@ id_list = resultat['id_show'].tolist()
 subprocess.run(['php', 'contenus1.php', id_list])
 exit()  #???
 
+<<<<<<< Updated upstream:S2/V0 Reccomandation/script_recom.py
+=======
+    # Execute function to get the list of recommended films
+    
+    id_list = resultat['id_show'].tolist()
+    # Send to php script
+    print(json.dumps(id_list))
+>>>>>>> Stashed changes:S2/web/script_recom.py
 
