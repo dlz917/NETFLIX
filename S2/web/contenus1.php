@@ -5,13 +5,9 @@ session_start();
 
 // Récupération des choix de l'utilisateur
 $type = isset( $_SESSION['utilisateur']['type']) ? $_SESSION['utilisateur']['type'] : [];
-echo $type;
 $genre = isset($_SESSION['utilisateur']['genre']) ? $_SESSION['utilisateur']['genre'] : [];
-print_r($genre);
 $cast = isset($_SESSION['utilisateur']['cast']) ? $_SESSION['utilisateur']['cast'] : [];
-print_r($cast);
 $director = isset($_SESSION['utilisateur']['director']) ? $_SESSION['utilisateur']['director'] : [];
-print_r($director);
 
 // Connexion à la base de données MySQL
 require('bd.php');
